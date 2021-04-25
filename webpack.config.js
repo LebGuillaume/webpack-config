@@ -1,4 +1,5 @@
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 let mode = "development";
 let target = "web";
 if (process.env.NODE_ENV === "production") {
@@ -17,11 +18,6 @@ module.exports = {
       {
         test: /\.(png|jpe?g|gif|svg)$/i,
         type: "asset",
-        parser: {
-          dataUrlCondtion: {
-            maxSize: 30 * 1024,
-          }
-        }
       },
       {
         test: /\.(s[ac]|c)ss$/i,
@@ -44,7 +40,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [new MiniCssExtractPlugin()],
+  plugins: [new MiniCssExtractPlugin(), new HtmlWebpackPlugin()],
   resolve: {
     extensions: [".js", ".jsx"],
   },
